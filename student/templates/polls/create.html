@@ -1,0 +1,17 @@
+{% extends 'polls/base.html'%}
+
+{% block content123 %}
+    {% if dsquest %}
+        <h2>Danh Sách</h2>
+
+        <form action="">
+       
+        <input type="text" id="fname" name="fname">
+        <li><input type="text" value="item.student_name">{{ item.student_name }}</li>
+    
+
+        </form>
+    {% else %}
+        <h3 style="color: red;">Không có dữ liệu</h3>
+    {% endif %}
+{% endblock %}

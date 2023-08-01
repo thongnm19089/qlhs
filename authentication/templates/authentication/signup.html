@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <title>Đăng kí</title>
+<script >
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+    });
+
+function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "okk"
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Mật khẩu ko trùng nhau !"
+    }
+} 
+// validates text only
+// function Validate(txt) {
+//     txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+// }
+// validate email
+function email_validate(email)
+{
+var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+
+    if(regMail.test(email) == false)
+    {
+    document.getElementById("status").innerHTML    = "<span class='warning' style='color :red;'>Địa chỉ email chưa hợp lệ.</span>";
+    }
+    else
+    {
+    document.getElementById("status").innerHTML	= "<span class='valid'></span>";	
+    }
+}
+
+function validate() {
+      
+      if( document.myForm.Name.value == "" ) {
+         alert( "Please provide your name!" );
+         document.myForm.Name.focus() ;
+         return false;
+      }
+     
+      return( true );
+   }
+
+
+                              
+</script>
+<style>
+    body{
+        margin-left: 100px ;
+  padding:50px 100px;
+  background-color:#efefef;
+  
+}
+a, a:hover{
+  color:#333
+}
+    body {
+  background-color:#fff;
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px Roboto,arial,sans-serif;
+  margin-left: 200px;
+}
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+</style>
+
+
+</head>
+<body>
+    
+<div class="container" style="padding-left: 200px;margin-left: 200px;  "  >
+	<div class="row">
+        <div class="col-md-6">
+            {% for message in messages %}
+            <!-- <div class="alert alert-{{ message.tags }}  alert-dismissible fade show " role="alert"> -->
+            <div id="box" class="box-hidden" style="color: red;padding-bottom: 20px;display: block;"><strong>Lỗi :</strong>{{ message }}
+            <button aria-label="Close" onclick="document.getElementById('box').style.display='none';" class="close-button">x</button>
+            </div>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+            </button> -->
+            <!-- </div> -->
+            {% endfor %}
+            <form action="/signup" method="post" id="fileForm" role="form" autocomplete="off">
+                {% csrf_token %}
+            <fieldset><legend class="text-center">Đăng Kí .. <span class="req"></span></legend>
+            
+                <div class="form-group"> 	 
+                    <label for="firstname"><span class="req"></span> Tên đăng nhập : </label>
+                        <input class="form-control" type="text" name="username" id = "txt" onclick="myFunction()"  required /> 
+                        <p id="p01"></p>
+                            <div id="errFirst"></div>    
+                           
+                </div>
+             
+            <div class="form-group"> 	 
+                <label for="firstname"><span class="req"></span> First name: </label>
+                    <input class="form-control" type="text" name="fname" id = "txt" onkeyup = "Validate(this)" required /> 
+                        <div id="errFirst"></div>    
+            </div>
+
+            <div class="form-group">
+                <label for="lastname"><span class="req"> </span> Last name: </label> 
+                    <input class="form-control" type="text" name="lname" id = "txt" onkeyup = "Validate(this)" placeholder="" required />  
+                        <div id="errLast"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><span class="req"></span> Email Address: </label> 
+                    <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />   
+                        <div class="status" id="status"></div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="password"><span class="req"></span> Password: </label>
+                    <!-- <input required name="pass1" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu dài hơn 8 kí tự , cả chữ hoa và chữ thường"  /> </p> -->
+
+                    <div class="input-group" id="show_hide_password">
+                        <input id="pass1" name = "pass1" class="form-control" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mật khẩu dài hơn 8 kí tự , cả chữ hoa và chữ thường" >
+                        <div class="input-group-addon">
+                          <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </div>
+                      </div></br>
+
+                <label for="password"><span class="req"></span> Password Confirm: </label>
+                    <!-- <input required name="pass2" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); " /> -->
+                    <div class="input-group" id="show_hide_password">
+                        <input required name="pass2" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); " >
+                        <div class="input-group-addon">
+                          <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        </div>
+                      </div> 
+                    <span id="confirmMessage" class="confirmMessage"></span>
+                    </div>
+
+         
+
+            <div class="wrapper">
+                <span class="group-btn">     
+                   
+                    <button type="submit" class="btn btn-primary btn-md">Sign Up <i class="fa fa-sign-in"></i></button>
+                    <a href="/" style="color: rgb(0, 0, 0);">Quay Lại</a>
+
+                </span>
+                </div>
+                </div>  
+            </fieldset>
+            </form>
+</div>
+</div>
+</body>
+</html>

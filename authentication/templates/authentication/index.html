@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <title>Home</title>
+  <script>
+    // var myModal = document.getElementById('myModal')
+    // var myInput = document.getElementById('myInput')
+    // myModal.addEventListener('shown.bs.modal', function () {
+    //   myInput.focus()})
+    $(document).ready(function () {
+      // Activate tooltip
+      $('[data-toggle="tooltip"]').tooltip();
+
+      // Select/Deselect checkboxes
+      var checkbox = $('table tbody input[type="checkbox"]');
+      $("#selectAll").click(function () {
+        if (this.checked) {
+          checkbox.each(function () {
+            this.checked = true;
+          });
+        } else {
+          checkbox.each(function () {
+            this.checked = false;
+          });
+        }
+      });
+      checkbox.click(function () {
+        if (!this.checked) {
+          $("#selectAll").prop("checked", false);
+        }
+      });
+    });
+  </script>
+  <style>
+    body {
+      color: #566787;
+      background: #f5f5f5;
+      font-family: 'Varela Round', sans-serif;
+      font-size: 13px;
+    }
+
+    .table-wrapper {
+      background: #fff;
+      padding: 20px 25px;
+      margin: 30px 0;
+      border-radius: 3px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .table-title {
+      padding-bottom: 15px;
+      background: #435d7d;
+      color: #fff;
+      padding: 16px 30px;
+      margin: -20px -25px 10px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .table-title h2 {
+      margin: 5px 0 0;
+      font-size: 24px;
+    }
+
+    .table-title .btn-group {
+      float: right;
+    }
+
+    .table-title .btn {
+      color: #fff;
+      float: right;
+      font-size: 13px;
+      border: none;
+      min-width: 50px;
+      border-radius: 2px;
+      border: none;
+      outline: none !important;
+      margin-left: 10px;
+    }
+
+    .table-title .btn i {
+      float: left;
+      font-size: 21px;
+      margin-right: 5px;
+    }
+
+    .table-title .btn span {
+      float: left;
+      margin-top: 2px;
+    }
+
+    table.table tr th,
+    table.table tr td {
+      border-color: #e9e9e9;
+      padding: 12px 15px;
+      vertical-align: middle;
+    }
+
+    table.table tr th:first-child {
+      width: 60px;
+    }
+
+    table.table tr th:last-child {
+      width: 100px;
+    }
+
+    table.table-striped tbody tr:nth-of-type(odd) {
+      background-color: #fcfcfc;
+    }
+
+    table.table-striped.table-hover tbody tr:hover {
+      background: #f5f5f5;
+    }
+
+    table.table th i {
+      font-size: 13px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    table.table td:last-child i {
+      opacity: 0.9;
+      font-size: 22px;
+      margin: 0 5px;
+    }
+
+    table.table td a {
+      font-weight: bold;
+      color: #566787;
+      display: inline-block;
+      text-decoration: none;
+      outline: none !important;
+    }
+
+    table.table td a:hover {
+      color: #2196F3;
+    }
+
+    table.table td a.edit {
+      color: #FFC107;
+    }
+
+    table.table td a.delete {
+      color: #F44336;
+    }
+
+    table.table td i {
+      font-size: 19px;
+    }
+
+    table.table .avatar {
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .pagination {
+      float: right;
+      margin: 0 0 5px;
+    }
+
+    .pagination li a {
+      border: none;
+      font-size: 13px;
+      min-width: 30px;
+      min-height: 30px;
+      color: #999;
+      margin: 0 2px;
+      line-height: 30px;
+      border-radius: 2px !important;
+      text-align: center;
+      padding: 0 6px;
+    }
+
+    .pagination li a:hover {
+      color: #666;
+    }
+
+    .pagination li.active a,
+    .pagination li.active a.page-link {
+      background: #03A9F4;
+    }
+
+    .pagination li.active a:hover {
+      background: #0397d6;
+    }
+
+    .pagination li.disabled i {
+      color: #ccc;
+    }
+
+    .pagination li i {
+      font-size: 16px;
+      padding-top: 6px
+    }
+
+    .hint-text {
+      float: left;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    /* Custom checkbox */
+    .custom-checkbox {
+      position: relative;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      opacity: 0;
+      position: absolute;
+      margin: 5px 0 0 3px;
+      z-index: 9;
+    }
+
+    .custom-checkbox label:before {
+      width: 18px;
+      height: 18px;
+    }
+
+    .custom-checkbox label:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      background: white;
+      border: 1px solid #bbb;
+      border-radius: 2px;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      width: 6px;
+      height: 11px;
+      border: solid #000;
+      border-width: 0 3px 3px 0;
+      transform: inherit;
+      z-index: 3;
+      transform: rotateZ(45deg);
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:before {
+      border-color: #03A9F4;
+      background: #03A9F4;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+      border-color: #fff;
+    }
+
+    .custom-checkbox input[type="checkbox"]:disabled+label:before {
+      color: #b8b8b8;
+      cursor: auto;
+      box-shadow: none;
+      background: #ddd;
+    }
+
+    /* Modal styles */
+    .modal .modal-dialog {
+      max-width: 400px;
+    }
+
+    .modal .modal-header,
+    .modal .modal-body,
+    .modal .modal-footer {
+      padding: 20px 30px;
+    }
+
+    .modal .modal-content {
+      border-radius: 3px;
+    }
+
+    .modal .modal-footer {
+      background: #ecf0f1;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .modal .modal-title {
+      display: inline-block;
+    }
+
+    .modal .form-control {
+      border-radius: 2px;
+      box-shadow: none;
+      border-color: #dddddd;
+    }
+
+    .modal textarea.form-control {
+      resize: vertical;
+    }
+
+    .modal .btn {
+      border-radius: 2px;
+      min-width: 100px;
+    }
+
+    .modal form label {
+      font-weight: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  {% for message in messages %}
+  <!-- <div class="alert alert-{{ message.tags }}  alert-dismissible fade show " role="alert"> -->
+  <div id="box" class="box-hidden" style="color: rgb(0, 116, 35);padding-bottom: 20px;display: block;padding: 50px 50px;"><h3>{{ message }}  <button aria-label="Close" onclick="document.getElementById('box').style.display='none';" class="close-button">x</button></h3>
+
+  </div>
+  <!-- <button type="button" class="close" data-dismiss="alert" aria-label="close">
+  <span aria-hidden="true">&times;</span>
+  </button> -->
+  <!-- </div> -->
+  {% endfor %}
+
+  <h1
+    style="text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif ;  padding-top: 60px; padding-bottom: 20px;width: auto;">
+    Chào Mừng Bạn Đến Với Trang web Quản Lý Học Sinh</h1>
+
+
+{% if user.is_authenticated %}
+  <nav class="" style="float: right;padding-top: 20px;width: 10%;padding-left: 10px;">
+    <form class="form-inline">
+      <h5
+        style="padding: 7px 7px;color: rgb(255, 255, 255);background-color: rgb(31, 114, 10);border-radius: 10px 10px;margin-right: 15px;">
+        Xin Chào : {{ fname }} </h5>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <a href="/signout">Đăng Xuất !</a>
+      </button>
+    </form>
+  </nav>
+
+  <!-- <h2 style="padding-bottom: 20px;padding-top: 110px; padding-left: 30px;">Danh Sách :</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Căn Dước CD</th>
+            <th scope="col">Email</th>
+            <th scope="col">GIỚI TÍNH</th>
+            <th scope="col">LỚP HỌC</th>
+            <th scope="col">ĐỊA CHỈ</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Cập nhật</th>
+            <th scope="col">Delete</th>
+        </tr>
+        {% for item in dsquest %}
+        <tr>
+            <td>{{ item.student_name }}</td>
+            <td>{{ item.student_age }}</td>
+            <td>{{ item.student_cccd }}</td>
+            <td>{{ item.student_email }}</td>
+            <td>{{ item.student_sex }}</td>
+            <td>{{ item.student_class }}</td>
+            <td>{{ item.student_address }}</td>
+            <td>{{ item.student_img }}</td>
+            <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><i class="fa-solid fa-arrow-rotate-right"></i> </button>
+            </td>
+            <td style="text-align: center;" ><a href="http://127.0.0.1:8000/polls/{{item.id }}/delete"> <i class="fa-solid fa-trash-can" ></i></a>
+            </td>
+        </tr>
+    </table>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update !!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form  action="{{item.student_id }}/update"  method="POST" enctype="multipart/form-data" class="form" role="form">
+                {% csrf_token %}
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Tên :</label>
+                    <input class="form-control" name="student_name" placeholder="" required="" autofocus="" type="text" value="{{ obj.student_name }}"> </br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Ngày Sinh :</label>
+                    <input class="form-control" name="student_age" placeholder="" required="" autofocus="" type="date" value="{{ obj.student_age }}"> </br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Căn Cước Công Dân :</label>
+                    <input class="form-control" name="student_cccd" placeholder="Căn Cước Công Dân" required="" autofocus="" type=""value="{{ obj.student_cccd }}"> </br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Nhập email :</label>
+                    <input class="form-control" name="student_email" placeholder="Email" type="email" value="{{ obj.student_email }}"></br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Giới tính :</label>
+                    <select class="form-control" name="student_sex" id="exampleFormControlSelect1">
+                      <option>Nam</option>
+                      <option>Nữ</option>
+                      <option>Giới Tính khác</option>
+                    </select></br>  
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Nhập lớp học :</label>
+                    <input class="form-control" name="student_class" placeholder="Lớp" type="text" value="{{ obj.student_class }}"></br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Nhập Địa Chỉ :</label>
+                    <input class="form-control" name="student_address" placeholder="Địa chỉ" type="text" value="{{ obj.student_address }}"></br>
+                    <label style="padding-left: 5px;" for="exampleFormControlSelect1">Nhập ảnh :</label>
+                    <input class="form-control" name="student_img" placeholder="Ảnh" type="" value="{{ obj.student_img }}"></br>
+                    <input type="submit" value="Update"> <a href="/">quay lại</a>
+                </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </br>
+    {% endfor %} -->
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <body>
+    <div class="container" style="width: 100%;">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Manage <b>Student</b></h2>
+            </div>
+            <div class="col-sm-6">
+              <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
+                  class="material-icons">&#xE147;</i> <span>Add New Student</span></a>
+              <!-- <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
+                  class="material-icons">&#xE15C;</i> <span>Delete</span></a> -->
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+            
+              
+            <th  style="width: auto;">Tên</th>
+            <th >Ngày sinh</th>
+            <th >Căn Dước CD</th>
+            <th >Email</th>
+            <th >GIỚI TÍNH</th>
+            <th >LỚP HỌC</th>
+            <th >ĐỊA CHỈ</th>
+            <th >Ảnh</th>
+            <th style="text-align: center;">Cập nhật</th>
+            <th style="text-align: center;" >Delete</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in dsquest %}
+            <tr>
+              <td>{{ item.student_name }}</td>
+              <td>{{ item.student_age }}</td>
+              <td>{{ item.student_cccd }}</td>
+              <td>{{ item.student_email }}</td>
+              <td>{{ item.student_sex }}</td>
+              <td>{{ item.student_class }}</td>
+              <td>{{ item.student_address }}</td>
+              <td>{{ item.student_img }}</td>
+              <td style="text-align: center;">
+                <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal"><i
+                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              </td>
+              <td style="text-align: center;"><a  href="#deleteEmployeeModal-{{forloop.counter}}" class="delete" data-toggle="modal"><i 
+                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+       
+
+      </div>
+    </div>
+    <!-- add Modal HTML -->
+    <div id="addEmployeeModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="{% url 'add' %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-header">
+              <h4 class="modal-title">Add Employee</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="student_name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>ngày sinh</label>
+                <input type="date" name="student_age" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Chưng minh nhân dân</label>
+                <input class="form-control" name="student_cccd" required></textarea>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="student_email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label  for="exampleFormControlSelect1">Giới tính :</label>
+                <select class="form-control" name="student_sex" id="exampleFormControlSelect1">
+                  <option>Nam</option>
+                  <option>Nữ</option>
+                  <option>Giới Tính khác</option>
+                </select></br> 
+              </div>
+              <div class="form-group">
+                <label>Lớp</label>
+                <input type="text" name="student_class" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" name="student_address" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Ảnh</label>
+                <input type="text" name="student_img" class="form-control" required>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% for item in dsquest %}
+    <!-- Edit Modal HTML -->
+    <div id="editEmployeeModal-{{forloop.counter}}" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/update/{{ item.id }}" method="POST">
+            {% csrf_token %}
+            <div class="modal-header">
+              <h4 class="modal-title">Add Student</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" value="{{ item.student_name }}" name="student_name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Ngày sinh</label>
+                <input type="data" value="{{ item.student_age }}" name="student_age" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Chưng minh nhân dân</label>
+                <input class="form-control" name="student_cccd" value="{{ item.student_cccd }}" required></textarea>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="student_email" value="{{ item.student_email }}" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label  for="exampleFormControlSelect1">Giới tính :</label>
+                <select class="form-control" name="student_sex" id="exampleFormControlSelect1">
+                  <option>Nam</option>
+                  <option>Nữ</option>
+                  <option>Giới Tính khác</option>
+                </select></br> 
+              </div>
+              <div class="form-group">
+                <label>Lớp</label>
+                <input type="text" name="student_class" value="{{ item.student_class }}" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" name="student_address" value="{{ item.student_address }}" class="form-control"
+                  required>
+              </div>
+              <div class="form-group">
+                <label>Ảnh</label>
+                <input type="text" name="student_img" value="{{ item.student_img }}" class="form-control" required>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Update">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% for item in dsquest %}
+    <!-- Delete Modal HTML -->
+    <div id="deleteEmployeeModal-{{forloop.counter}}" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h4 class="modal-title">Delete Student</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+
+              <p class="text-warning"><small>Bạn có muốn xóa học sinh " {{item.student_name}} " không ??</small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <a href="delete/{{item.id}}" type="submit" class="btn btn-danger" value="Delete">Delete</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    {% endfor %}
+    <!-- <button type="submit"><a href="/signout">SignOut</a></button> -->
+    {% else %}
+    <div style="text-align: center;">
+      <h2 style="color: red;font-family: Arial, Helvetica, sans-serif;padding-top: 100px;text-align: center;">Bạn Cần
+        đăng nhập để xem thông tin học sinh</h2>
+      <a href="/signin" style="margin: 10px;" class="btn btn-primary btn-lg active" role="button"
+        aria-pressed="true">Đăng Nhập</a>
+      <a href="/signup" style="margin: 10px;" class="btn btn-primary btn-lg active" role="button"
+        aria-pressed="true">Đăng kí</a>
+    </div>
+
+    {% endif %}
+
+  </body>
+
+</html>

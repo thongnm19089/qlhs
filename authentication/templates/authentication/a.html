@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" cross0origin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+    <title>Document</title>
+</head>
+<body>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<a href='#' data-toggle='modal' data-target='#removeCandidateModal' onclick="removeCandidate()">Remove</a>
+<div class="modal fade" id="removeCandidateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remove Candidate</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="remove-candidates-modal-body"></div>
+      <div class="modal-footer" id="remove-candidates-modal-footer"></div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+        function removeCandidate() {
+  let id = "45678";
+  let name = "Bob";
+  let election_type = "BHVC";
+
+  document.getElementById('remove-candidates-modal-body').innerHTML = '<p>Are you sure you want to remove the following candidate<br> Candidate Name:' + name +
+    '<br>Candidate ID:' +
+    '<br>Elections:' + election_type + '</p>';
+  document.getElementById('remove-candidates-modal-footer').innerHTML = '' +
+    '<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>\n' +
+    '                <button type="button" class="btn btn-primary" onclick=removeCandidateYes("' + id + '")>Yes</button>';
+}
+</script>
+
+</html>
