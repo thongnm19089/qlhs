@@ -322,7 +322,11 @@
 </head>
 
 <body>
-
+  
+  {% block content %}
+ 
+  {% endblock %}
+  
   {% for message in messages %}
   <!-- <div class="alert alert-{{ message.tags }}  alert-dismissible fade show " role="alert"> -->
   <div id="box" class="box-hidden" style="color: rgb(0, 116, 35);padding-bottom: 20px;display: block;padding: 50px 50px;"><h3>{{ message }}  <button aria-label="Close" onclick="document.getElementById('box').style.display='none';" class="close-button">x</button></h3>
@@ -334,9 +338,6 @@
   <!-- </div> -->
   {% endfor %}
 
-  <h1
-    style="text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif ;  padding-top: 60px; padding-bottom: 20px;width: auto;">
-    Chào Mừng Bạn Đến Với Trang web Quản Lý Học Sinh</h1>
 
 
 {% if user.is_authenticated %}
@@ -473,7 +474,9 @@
               <td>{{ item.student_sex }}</td>
               <td>{{ item.student_class }}</td>
               <td>{{ item.student_address }}</td>
-              <td>{{ item.student_img }}</td>
+              <td>
+                <img src="{{ item.student_img }}" alt="Ảnh" width="60" height="100%">
+              </td>
               <td style="text-align: center;">
                 <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal"><i
                     class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -632,9 +635,22 @@
     {% endfor %}
     <!-- <button type="submit"><a href="/signout">SignOut</a></button> -->
     {% else %}
+    <main>
+      <!-- Add your main content here -->
+      <section id="welcome">
+          <h2>Xin chào, Quản lý học sinh!</h2>
+          <p>Chào mừng bạn đến với trang quản lý học sinh. Chúng ta có thể dễ dàng quản lý thông tin về học sinh ở đây.</p>
+      </section>
+
+      <section id="statistics">
+          <h2>Thống kê</h2>
+          <p>Hiển thị các thông số thống kê quan trọng về học sinh, số lượng học sinh, tổng điểm trung bình,...</p>
+      </section>
+
+      
+  </main>
     <div style="text-align: center;">
-      <h2 style="color: red;font-family: Arial, Helvetica, sans-serif;padding-top: 100px;text-align: center;">Bạn Cần
-        đăng nhập để xem thông tin học sinh</h2>
+      
       <a href="/signin" style="margin: 10px;" class="btn btn-primary btn-lg active" role="button"
         aria-pressed="true">Đăng Nhập</a>
       <a href="/signup" style="margin: 10px;" class="btn btn-primary btn-lg active" role="button"
@@ -642,7 +658,17 @@
     </div>
 
     {% endif %}
-
+    <footer style = "background-color: #333;
+    color: #fff;
+    text-align: center;
+    height: 50px;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;"> 
+    <!-- Add your footer content here -->
+    <p style="line-height: 40px">Bản quyền © 2023 Quản lý học sinh --- Address: thongnm.nm.nde19089@vtc.edu.vn --- Phone: 0965431900</p>
+</footer>
   </body>
 
 </html>

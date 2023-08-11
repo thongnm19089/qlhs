@@ -36,7 +36,7 @@ def home(request):
       
         }
        
-    return render(request, "authentication/index.html", context)
+    return render(request, "authentication/pagehome.html", context)
 
     
 
